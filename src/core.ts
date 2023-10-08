@@ -4,7 +4,7 @@ import { ITreeNode } from './interfaces';
  * https://leetcode.com/problems/binary-tree-inorder-traversal/
  * Left, center, right
  */
-export const inorderTraversalRecursive = (root: ITreeNode): number[]  => {
+export const inorderTraversalRecursive = (root?: ITreeNode): number[]  => {
   const res: number[] = [];
 
   const traverse = (node? : ITreeNode) => {
@@ -24,12 +24,13 @@ export const inorderTraversalRecursive = (root: ITreeNode): number[]  => {
  * https://leetcode.com/problems/binary-tree-inorder-traversal/
  * Left, center, right
  */
-export const inorderTraversalIterative = (root: ITreeNode): number[] => {
+export const inorderTraversalIterative = (root?: ITreeNode): number[] => {
 
   if(!root) return [];
 
   const res: number[] = [];
   const stack: ITreeNode[] = [];
+
   let node: ITreeNode|undefined = root;
 
   while(node || stack.length > 0){
@@ -54,7 +55,27 @@ export const inorderTraversalIterative = (root: ITreeNode): number[] => {
  * https://leetcode.com/problems/binary-tree-postorder-traversal/
  * Left, right, center
  */
-export const postorderTraversalIterative = (root: ITreeNode): number[] => {
+export const postorderTraversalRecursive = (root?: ITreeNode): number[] => {
+  const res: number[] = [];
+
+  const traverse = (node?: ITreeNode) => {
+    if(!node) return;
+
+    traverse(node.left);
+    traverse(node.right);
+    res.push(node.val);
+  }
+
+  traverse(root);
+
+  return res;
+};
+
+/**
+ * https://leetcode.com/problems/binary-tree-postorder-traversal/
+ * Left, right, center
+ */
+export const postorderTraversalIterative = (root?: ITreeNode): number[] => {
   if(!root) return [];
 
   const stack: ITreeNode[] = [root];
@@ -74,18 +95,18 @@ export const postorderTraversalIterative = (root: ITreeNode): number[] => {
 };
 
 /**
- * https://leetcode.com/problems/binary-tree-postorder-traversal/
- * Left, right, center
+ * https://leetcode.com/problems/binary-tree-preorder-traversal/
+ * Center, left, right
  */
-export const postorderTraversalRecursive = (root: ITreeNode): number[] => {
+export const preorderTraversalRecursive = (root?: ITreeNode): number[] => {
   const res: number[] = [];
 
   const traverse = (node?: ITreeNode) => {
     if(!node) return;
 
+    res.push(node.val);
     traverse(node.left);
     traverse(node.right);
-    res.push(node.val);
   }
 
   traverse(root);
@@ -97,7 +118,7 @@ export const postorderTraversalRecursive = (root: ITreeNode): number[] => {
  * https://leetcode.com/problems/binary-tree-preorder-traversal/
  * Center, left, right
  */
-export const preorderTraversalIterative = (root: ITreeNode): number[] => {
+export const preorderTraversalIterative = (root?: ITreeNode): number[] => {
 
   if(!root) return [];
 
@@ -119,26 +140,6 @@ export const preorderTraversalIterative = (root: ITreeNode): number[] => {
       stack.push(node.left);
     }
   }
-
-  return res;
-};
-
-/**
- * https://leetcode.com/problems/binary-tree-preorder-traversal/
- * Center, left, right
- */
-export const preorderTraversal = (root: ITreeNode): number[] => {
-  const res: number[] = [];
-
-  const traverse = (node?: ITreeNode) => {
-    if(!node) return;
-
-    res.push(node.val);
-    traverse(node.left);
-    traverse(node.right);
-  }
-
-  traverse(root);
 
   return res;
 };
