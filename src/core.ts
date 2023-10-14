@@ -36,7 +36,7 @@ export const inorderTraversalIterative = (root?: ITreeNode): number[] => {
   while(node || stack.length > 0){
 
     while(node){
-      stack.push(node);
+      stack.push(node as ITreeNode);
       node = node.left;
     }
 
@@ -75,6 +75,36 @@ export const postorderTraversalRecursive = (root?: ITreeNode): number[] => {
  * https://leetcode.com/problems/binary-tree-postorder-traversal/
  * Left, right, center
  */
+export const postorderTraversalIterativeWith2Stacks = (root?: ITreeNode): number[] => {
+  if(!root) return [];
+
+  const res: number[] = [];
+  const stack1: ITreeNode[] = [root];
+  const stack2: ITreeNode[] = [];
+
+  while (stack1.length > 0) {
+
+    // Pop an item from stack1 and Push it to stack2
+    const node = stack1.pop();
+    if(!node) continue;
+    stack2.push(node);
+
+    // Push left and right children of
+    // removed item to stack1
+    if (node?.left) stack1.push(node.left);
+    if (node?.right) stack1.push(node.right);
+  }
+
+  // Print all elements of second stack
+  while (stack2.length > 0) {
+    const node = stack2.pop();
+    if(!node) continue;
+    res.push(node.val);
+  }
+
+  return res;
+};
+
 export const postorderTraversalIterative = (root?: ITreeNode): number[] => {
   if(!root) return [];
 
@@ -82,13 +112,13 @@ export const postorderTraversalIterative = (root?: ITreeNode): number[] => {
   const res: number[] = [];
 
   while(stack.length){
-    const curr = stack.pop();
-    if(!curr) return res;
+    const node = stack.pop();
+    if(!node) return res;
 
-    if(curr.left) stack.push(curr.left)
-    if(curr.right) stack.push(curr.right)
+    if(node.left) stack.push(node.left)
+    if(node.right) stack.push(node.right)
 
-    res.unshift(curr.val);
+    res.unshift(node.val);
   }
 
   return res;
