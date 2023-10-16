@@ -85,8 +85,7 @@ export const postorderTraversalIterativeWith2Stacks = (root?: ITreeNode): number
   while (stack1.length > 0) {
 
     // Pop an item from stack1 and Push it to stack2
-    const node = stack1.pop();
-    if(!node) continue;
+    const node = stack1.pop() as ITreeNode;
     stack2.push(node);
 
     // Push left and right children of
@@ -97,8 +96,7 @@ export const postorderTraversalIterativeWith2Stacks = (root?: ITreeNode): number
 
   // Print all elements of second stack
   while (stack2.length > 0) {
-    const node = stack2.pop();
-    if(!node) continue;
+    const node = stack2.pop() as ITreeNode;
     res.push(node.val);
   }
 
@@ -112,8 +110,7 @@ export const postorderTraversalIterative = (root?: ITreeNode): number[] => {
   const res: number[] = [];
 
   while(stack.length){
-    const node = stack.pop();
-    if(!node) return res;
+    const node = stack.pop() as ITreeNode;
 
     if(node.left) stack.push(node.left)
     if(node.right) stack.push(node.right)
@@ -157,8 +154,7 @@ export const preorderTraversalIterative = (root?: ITreeNode): number[] => {
   const stack: ITreeNode[] = [root];
 
   while(stack.length > 0){
-    const node = stack.pop();
-    if(!node) return res;
+    const node = stack.pop() as ITreeNode;
 
     res.push(node.val);
 
@@ -172,4 +168,51 @@ export const preorderTraversalIterative = (root?: ITreeNode): number[] => {
   }
 
   return res;
+};
+
+export const bfsWithQueue = (root?: ITreeNode): number[] => {
+  if(!root) return [];
+
+  const queue = [root];
+  const result: number[] = [];
+
+  while (queue.length > 0) {
+    const node = queue.shift() as ITreeNode;
+
+    result.push(node.val);
+
+    if(node.left) queue.push(node.left);
+    if(node.right) queue.push(node.right);
+  }
+
+  return result;
+};
+
+export const bfsWithLevel = (root?: ITreeNode): number[] => {
+  if(!root) return [];
+
+  const queue = [root];
+  const result: number[] = [];
+
+  let level = 0;
+
+  while (queue.length > 0) {
+
+    let levelSize = queue.length;
+
+    while (levelSize > 0) {
+      const node = queue.shift() as ITreeNode;
+      result.push(node.val);
+
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+
+      levelSize--;
+    }
+
+    console.log(level);
+    level++;
+  }
+
+  return result;
 };

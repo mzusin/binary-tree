@@ -14,4 +14,7 @@ const postorderTraversalIterative: (root: ITreeNode) => number[];
 const postorderTraversalIterativeWith2Stacks: (root?: ITreeNode) => number[];
 const preorderTraversalRecursive: (root: ITreeNode) => number[];
 const preorderTraversalIterative: (root: ITreeNode) => number[];
+
+const bfsWithQueue: (root?: ITreeNode) => number[];
+declare const bfsWithLevel: (root?: ITreeNode) => number[];
 ```

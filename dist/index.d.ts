@@ -12,4 +12,7 @@ module 'mz-binary-tree' {
     export const postorderTraversalIterativeWith2Stacks: (root?: ITreeNode) => number[];
     export const preorderTraversalRecursive: (root?: ITreeNode) => number[];
     export const preorderTraversalIterative: (root?: ITreeNode) => number[];
+
+    export const bfsWithQueue: (root?: ITreeNode) => number[];
+    export const bfsWithLevel: (root?: ITreeNode) => number[];
 }

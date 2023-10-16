@@ -6,6 +6,8 @@ import {
     postorderTraversalIterativeWith2Stacks,
     preorderTraversalRecursive,
     preorderTraversalIterative,
+    bfsWithQueue,
+    bfsWithLevel,
 } from '../src/core';
 import { ITreeNode } from '../src/interfaces';
 
@@ -458,4 +460,89 @@ describe('Core', () => {
             expect(result).toEqual([1, 2, 3, 4, 5]);
         });
     });
+
+    describe('bfsWithQueue()', () => {
+        // Helper function to create a binary tree from an array
+        const createBinaryTree = (arr: (number | undefined)[], index = 0): ITreeNode | undefined => {
+            if (index >= arr.length || arr[index] === null || arr[index] === undefined) {
+                return undefined;
+            }
+
+            return {
+                val: arr[index] as number,
+                left: createBinaryTree(arr, 2 * index + 1),
+                right: createBinaryTree(arr, 2 * index + 2),
+            };
+        };
+
+        it('should return an empty array for an empty tree', () => {
+            expect(bfsWithQueue()).toEqual([]);
+        });
+
+        it('should perform BFS on a binary tree', () => {
+            // Create a binary tree for testing
+            const tree: ITreeNode | undefined = createBinaryTree([1, 2, 3, 4, 5, 6, 7]);
+
+            // Perform BFS and check the result
+            expect(bfsWithQueue(tree)).toEqual([1, 2, 3, 4, 5, 6, 7]);
+        });
+
+        it('should handle a single-node tree', () => {
+            const tree: ITreeNode = { val: 42 };
+            expect(bfsWithQueue(tree)).toEqual([42]);
+        });
+
+        it('should handle a tree with a single left child', () => {
+            const tree: ITreeNode = { val: 1, left: { val: 2 } };
+            expect(bfsWithQueue(tree)).toEqual([1, 2]);
+        });
+
+        it('should handle a tree with a single right child', () => {
+            const tree: ITreeNode = { val: 1, right: { val: 2 } };
+            expect(bfsWithQueue(tree)).toEqual([1, 2]);
+        });
+    });
+
+    describe('bfsWithLevel()', () => {
+        // Helper function to create a binary tree from an array
+        const createBinaryTree = (arr: (number | undefined)[], index = 0): ITreeNode | undefined => {
+            if (index >= arr.length || arr[index] === null || arr[index] === undefined) {
+                return undefined;
+            }
+
+            return {
+                val: arr[index] as number,
+                left: createBinaryTree(arr, 2 * index + 1),
+                right: createBinaryTree(arr, 2 * index + 2),
+            };
+        };
+
+        it('should return an empty array for an empty tree', () => {
+            expect(bfsWithLevel()).toEqual([]);
+        });
+
+        it('should perform BFS on a binary tree', () => {
+            // Create a binary tree for testing
+            const tree: ITreeNode | undefined = createBinaryTree([1, 2, 3, 4, 5, 6, 7]);
+
+            // Perform BFS and check the result
+            expect(bfsWithLevel(tree)).toEqual([1, 2, 3, 4, 5, 6, 7]);
+        });
+
+        it('should handle a single-node tree', () => {
+            const tree: ITreeNode = { val: 42 };
+            expect(bfsWithLevel(tree)).toEqual([42]);
+        });
+
+        it('should handle a tree with a single left child', () => {
+            const tree: ITreeNode = { val: 1, left: { val: 2 } };
+            expect(bfsWithLevel(tree)).toEqual([1, 2]);
+        });
+
+        it('should handle a tree with a single right child', () => {
+            const tree: ITreeNode = { val: 1, right: { val: 2 } };
+            expect(bfsWithLevel(tree)).toEqual([1, 2]);
+        });
+    });
+
 });
