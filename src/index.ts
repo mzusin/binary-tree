@@ -1,7 +1,9 @@
 import * as core from './core';
+import * as bst from './bst';
 
 const api = {
     ...core,
+    ...bst,
 };
 
 declare global {
@@ -13,3 +15,4 @@ declare global {
 window.mzBinaryTree = window.mzBinaryTree || api;
 
 export * from './core';
+export * from './bst';

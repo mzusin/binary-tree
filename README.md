@@ -16,5 +16,8 @@ const preorderTraversalRecursive: (root: ITreeNode) => number[];
 const preorderTraversalIterative: (root: ITreeNode) => number[];
 
 const bfsWithQueue: (root?: ITreeNode) => number[];
-declare const bfsWithLevel: (root?: ITreeNode) => number[];
+const bfsWithLevel: (root?: ITreeNode) => number[];
+
+export declare const convertSortedArrayToBalancedBSTRecursive: (arr: number[]) => ITreeNode | undefined;
+export declare const convertSortedArrayToBalancedBSTIterative: (arr: number[]) => ITreeNode | undefined;
 ```
