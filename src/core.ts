@@ -40,12 +40,10 @@ export const inorderTraversalIterative = (root?: ITreeNode): number[] => {
       node = node.left;
     }
 
-    node = stack.pop();
+    node = stack.pop() as ITreeNode;
+    res.push(node.val);
 
-    if(node) {
-      res.push(node.val);
-      node = node.right;
-    }
+    node = node.right;
   }
 
   return res;
