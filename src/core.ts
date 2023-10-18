@@ -107,7 +107,7 @@ export const postorderTraversalIterative = (root?: ITreeNode): number[] => {
   const stack: ITreeNode[] = [root];
   const res: number[] = [];
 
-  while(stack.length){
+  while(stack.length > 0){
     const node = stack.pop() as ITreeNode;
 
     if(node.left) stack.push(node.left)
@@ -156,13 +156,8 @@ export const preorderTraversalIterative = (root?: ITreeNode): number[] => {
 
     res.push(node.val);
 
-    if(node.right){
-      stack.push(node.right);
-    }
-
-    if(node.left){
-      stack.push(node.left);
-    }
+    if(node.right) stack.push(node.right);
+    if(node.left) stack.push(node.left);
   }
 
   return res;
