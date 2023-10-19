@@ -1,7 +1,7 @@
 import {
     convertSortedArrayToBalancedBSTRecursive,
     convertSortedArrayToBalancedBSTIterative,
-} from '../src/bst';
+} from '../src/core/binary-search-tree';
 import { ITreeNode } from '../src/interfaces';
 
 describe('Binary Search Tree', () => {

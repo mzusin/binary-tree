@@ -1,11 +1,11 @@
-import * as core from './core';
-import * as bst from './bst';
-import * as complete from './complete-binary-tree';
+import * as core from './core/core';
+import * as bst from './core/binary-search-tree';
+import * as cbt from './core/complete-binary-tree';
 
 const api = {
     ...core,
     ...bst,
-    ...complete,
+    ...cbt,
 };
 
 declare global {
@@ -16,6 +16,6 @@ declare global {
 
 window.mzBinaryTree = window.mzBinaryTree || api;
 
-export * from './core';
-export * from './bst';
-export * from './complete-binary-tree';
+export * from './core/core';
+export * from './core/binary-search-tree';
+export * from './core/complete-binary-tree';

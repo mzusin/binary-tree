@@ -8,7 +8,7 @@ import {
     preorderTraversalIterative,
     bfsWithQueue,
     bfsWithLevel,
-} from '../src/core';
+} from '../src/core/core';
 import { ITreeNode } from '../src/interfaces';
 
 describe('Core', () => {

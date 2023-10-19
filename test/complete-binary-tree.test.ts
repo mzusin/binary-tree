@@ -1,7 +1,7 @@
 import {
     countCompleteBinaryTreeNodes,
     getCompleteBinaryTreeDepth,
-} from '../src/complete-binary-tree';
+} from '../src/core/complete-binary-tree';
 import { ITreeNode } from '../src/interfaces';
 
 describe('Complete Binary Tree', () => {

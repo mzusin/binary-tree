@@ -1,4 +1,4 @@
-import { ITreeNode } from './interfaces';
+import { ITreeNode } from '../interfaces';
 
 /**
  * https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/
