@@ -20,6 +20,9 @@ const preorderTraversalIterative: (root: ITreeNode) => number[];
 const bfsWithQueue: (root?: ITreeNode) => number[];
 const bfsWithLevel: (root?: ITreeNode) => number[];
 
-export declare const convertSortedArrayToBalancedBSTRecursive: (arr: number[]) => ITreeNode | undefined;
-export declare const convertSortedArrayToBalancedBSTIterative: (arr: number[]) => ITreeNode | undefined;
+const convertSortedArrayToBalancedBSTRecursive: (arr: number[]) => ITreeNode | undefined;
+const convertSortedArrayToBalancedBSTIterative: (arr: number[]) => ITreeNode | undefined;
+
+const getCompleteBinaryTreeDepth: (root?: ITreeNode) => number;
+const countCompleteBinaryTreeNodes: (root?: ITreeNode) => number;
 ```

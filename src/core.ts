@@ -209,3 +209,12 @@ export const bfsWithLevel = (root?: ITreeNode): number[] => {
 
   return result;
 };
+
+export const getDepth = (root?: ITreeNode) : number => {
+  if(!root) return 0;
+
+  const left = getDepth(root.left);
+  const right = getDepth(root.right);
+
+  return 1 + Math.max(left, right);
+};

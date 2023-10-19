@@ -15,4 +15,7 @@ module 'mz-binary-tree' {
 
     export const bfsWithQueue: (root?: ITreeNode) => number[];
     export const bfsWithLevel: (root?: ITreeNode) => number[];
+
+    export const getCompleteBinaryTreeDepth: (root?: ITreeNode) => number;
+    export const countCompleteBinaryTreeNodes: (root?: ITreeNode) => number;
 }
