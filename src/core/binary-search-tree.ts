@@ -1,6 +1,10 @@
 import { ITreeNode } from '../interfaces';
 
 /**
+ * Inorder traversal in BST creates sorted array.
+ */
+
+/**
  * https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/
  * Time Complexity: O(N)
  * Auxiliary Space: O(H) ~= O(log(N)), for recursive stack space where H is the height of the tree.
