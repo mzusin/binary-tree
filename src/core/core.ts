@@ -218,3 +218,26 @@ export const getDepth = (root?: ITreeNode) : number => {
 
   return 1 + Math.max(left, right);
 };
+
+/**
+ * Symmetric traversal for the left and right part of the tree in parallel.
+ * Can be useful for problems like:
+ * https://leetcode.com/problems/reverse-odd-levels-of-binary-tree/description/
+ */
+export const symmetricTraversal = (root?: ITreeNode): number[][] => {
+
+  const pairs: number[][] = [];
+
+  const traverse = (node1?: ITreeNode, node2?: ITreeNode) => {
+    if(!node1 || !node2) return;
+
+    pairs.push([node1.val, node2.val]);
+
+    traverse(node1.left, node2.right);
+    traverse(node2.left, node1.right);
+  };
+
+  traverse(root?.left, root?.right);
+
+  return pairs;
+};

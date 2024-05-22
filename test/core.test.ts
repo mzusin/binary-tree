@@ -8,6 +8,7 @@ import {
     preorderTraversalIterative,
     bfsWithQueue,
     bfsWithLevel,
+    symmetricTraversal,
 } from '../src/core/core';
 import { ITreeNode } from '../src/interfaces';
 
@@ -545,4 +546,78 @@ describe('Core', () => {
         });
     });
 
+    describe('symmetricTraversal()', () => {
+        test('should return an empty array for an empty tree', () => {
+            expect(symmetricTraversal(undefined)).toEqual([]);
+        });
+
+        test('should return an empty array for a tree with only one node', () => {
+            const root: ITreeNode = { val: 1 };
+            expect(symmetricTraversal(root)).toEqual([]);
+        });
+
+        test('should return pairs of symmetric nodes for a complete binary tree', () => {
+            const root: ITreeNode = {
+                val: 1,
+                left: { val: 2, left: { val: 4 }, right: { val: 5 } },
+                right: { val: 3, left: { val: 6 }, right: { val: 7 } },
+            };
+            expect(symmetricTraversal(root)).toEqual([[2, 3], [4, 7], [6, 5]]);
+        });
+
+        test('should handle trees with missing children correctly', () => {
+            const root: ITreeNode = {
+                val: 1,
+                left: { val: 2, left: { val: 4 }, right: undefined },
+                right: { val: 3, left: undefined, right: { val: 7 } },
+            };
+            expect(symmetricTraversal(root)).toEqual([[2, 3], [4, 7]]);
+        });
+
+        test('should handle larger trees correctly', () => {
+            const root: ITreeNode = {
+                val: 1,
+                left: {
+                    val: 2,
+                    left: { val: 4, left: { val: 8 }, right: { val: 9 } },
+                    right: { val: 5, left: { val: 10 }, right: { val: 11 } },
+                },
+                right: {
+                    val: 3,
+                    left: { val: 6, left: { val: 12 }, right: { val: 13 } },
+                    right: { val: 7, left: { val: 14 }, right: { val: 15 } },
+                },
+            };
+            expect(symmetricTraversal(root)).toEqual([
+                [
+                    2,
+                    3
+                ],
+                [
+                    4,
+                    7
+                ],
+                [
+                    8,
+                    15
+                ],
+                [
+                    14,
+                    9
+                ],
+                [
+                    6,
+                    5
+                ],
+                [
+                    12,
+                    11
+                ],
+                [
+                    10,
+                    13
+                ]
+            ]);
+        });
+    });
 });
