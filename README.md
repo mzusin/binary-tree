@@ -26,5 +26,5 @@ const convertSortedArrayToBalancedBSTIterative: (arr: number[]) => ITreeNode | u
 const getCompleteBinaryTreeDepth: (root?: ITreeNode) => number;
 const countCompleteBinaryTreeNodes: (root?: ITreeNode) => number;
 
-export declare const symmetricTraversal: (root?: ITreeNode) => number[][];
+const symmetricTraversal: (root?: ITreeNode) => number[][];
 ```
